@@ -1,0 +1,47 @@
+<div class="modal-background">
+  <div class="modal-container">
+    <h1>Add User</h1>
+
+    <!-- Step 1: Username -->
+    <form *ngIf="currentStep === 1" (ngSubmit)="nextStep()" #usernameForm="ngForm">
+      <label for="username">Username: *</label>
+      <input type="text" id="username" name="username" [(ngModel)]="user.username" required>
+
+      <button style="background-color: limegreen" type="button" (click)="nextStep()">Next</button>
+      <button style="background-color: red" type="button" (click)="closeModal.emit()">Close</button>
+    </form>
+
+    <!-- Step 2: Other Information -->
+    <form *ngIf="currentStep === 2" (ngSubmit)="addUser()" #userForm="ngForm">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName">
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName">
+
+      <label for="email">Email: *</label>
+      <input type="email" id="email" name="email" [(ngModel)]="user.email" required>
+
+      <label for="projectName">Project Name: *</label>
+      <select id="projectName" name="projectName" [(ngModel)]="user.projectName" required>
+        <option *ngFor="let project of projectList" [value]="project">{{ project }}</option>
+      </select>
+
+      <label for="country">Country: *</label>
+      <select id="country" name="country" [(ngModel)]="user.country" required>
+        <option *ngFor="let country of countryList" [value]="country.value">{{ country.display }}</option>
+      </select>
+
+      <label for="password">Password: *</label>
+      <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
+
+      <div class="form-group">
+        <label for="temporary" class="inline-label">Temporary Password:</label>
+        <input type="checkbox" id="temporary" name="temporary" [(ngModel)]="user.temporary">
+      </div>
+
+      <button style="background-color: limegreen" type="submit">Add User</button>
+      <button type="button" (click)="previousStep()">Back</button>
+    </form>
+  </div>
+</div>

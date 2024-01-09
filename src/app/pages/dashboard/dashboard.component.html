@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+</head>
+<body>
+<header>
+  <div (click)="navigateToDashboard()" class="logo-container">
+    <!-- Your logo image goes here -->
+    <img src="/assets/img/WhiteLogo.png" alt="Your Logo">
+  </div>
+  <div class="service-name">User Registration Platform</div>
+  <nav>
+    <a class="nav-item" (click)="openModal = true">Add User</a>
+    <a class="nav-item" (click)="logout()">Change Realm</a>
+  </nav>
+  <div class="search-container">
+    <input class="search-box" type="text" [(ngModel)]="searchTerm" placeholder="Search">
+  </div>
+</header>
+<div class="dashboard-container">
+  <h1>Registered Users</h1>
+  <p>Total Users: {{ users.length }}</p>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>Prosumer UUID</th>
+      <th>Project Name</th>
+      <th>Country Code</th>
+      <th style="color: #ff6363; text-align: center;">Delete User</th>
+      <!-- Add more columns as needed -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users | filter: searchTerm">
+      <td>{{ user.username }}</td>
+      <td>{{ user.attributes?.prosumerUUID }}</td>
+      <td>{{ user.attributes?.projectName }}</td>
+      <td>{{ user.attributes?.countryCode }}</td>
+      <td>
+        <!-- Add a delete button for each user -->
+        <div class="delete-icon" style="display: flex; justify-content: center; align-items: center;">
+          <img (click)="deleteUser(user.id)" alt="trashcan" [src]="'/assets/img/trashcan.svg'" style="width: 25px; height: 25px; cursor: pointer;">
+        </div>
+      </td>
+      <!-- Add more columns as needed -->
+    </tr>
+    </tbody>
+  </table>
+  <app-user-modal *ngIf="openModal" (closeModal)="openModal = false"></app-user-modal>
+</div>
+</body>
+</html>

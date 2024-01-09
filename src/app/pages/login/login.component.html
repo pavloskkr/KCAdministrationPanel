@@ -1,0 +1,15 @@
+<body class="login-body">
+<img class="image" alt="keycloak" [src]="'/assets/img/keycloak.svg'">
+<h1 class="page-title">Keycloak User Registration Panel</h1>
+<div class="login-container">
+  <h3 class="typed-text">Select project...</h3>
+  <div class="input-container">
+    <select [(ngModel)]="selectedProject">
+      <option *ngFor="let option of projectOptions" [value]="option.value">{{ option.display }}</option>
+    </select>
+    <button class="check-button" (click)="login()">
+      Get in!
+    </button>
+  </div>
+</div>
+</body>

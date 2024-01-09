@@ -1,0 +1,142 @@
+body {
+  height: 100%!important;
+  margin: 0;
+  background-color: #111;
+  color: white;
+}
+
+.logo-container {
+  margin: 5px 30px 5px 5px;
+}
+
+.logo-container:hover {
+  cursor: pointer;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1000; /* Ensure header is above other content */
+}
+
+.logo-container img {
+  max-height: 50px; /* Adjust the max height of your logo */
+}
+
+.service-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+nav {
+  display: flex;
+}
+
+.nav-item {
+  margin-left: 10px;
+  padding: 10px;
+  color: #c2c2c2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-item:hover {
+  background-color: white;
+  color: #333;
+}
+
+.search-container {
+  margin: auto;
+}
+
+.search-box {
+  width: 300px;
+  height: 30px;
+  padding-left: 10px;
+  border: white;
+  border-radius: 20px;
+  background: black;
+  color: white;
+}
+
+.dashboard-container {
+  padding: 70px 20px 20px; /* Adjust the top padding to accommodate the fixed header */
+}
+
+/* Add this to your existing styles in the <style> tag */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid white;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+/* Style for even rows (off-black) */
+tr:nth-child(even) {
+  background-color: #252525;
+}
+
+/* Style for odd rows (black) */
+tr:nth-child(odd) {
+  background-color: #000;
+}
+
+//.search-box {
+//  position: absolute;
+//  left: 50%;
+//  width: 300px;
+//  height: 30px;
+//  padding-left: 10px;
+//  border: white;
+//  border-radius: 20px;
+//  background: black;
+//  color: white;
+//}
+
+.add-user-button {
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-user-button:hover {
+  background-color: darkgreen;
+}
+
+.logout-button {
+  padding: 10px;
+  position: absolute;
+  left: 95%;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #b20000;
+}
+
