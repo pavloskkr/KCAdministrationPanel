@@ -26,9 +26,11 @@ interface User {
 export class DashboardComponent implements OnInit {
   accessToken: string | null;
   users: User[] = [];
-  openModal = false;
   searchTerm: string = '';
   private readonly usersEndpointBase = 'https://userauth.energylabs-ht.eu/auth/admin/realms/';
+  openUserModal = false;
+  openCountryModal = false;
+  openZonesModal= false;
 
   constructor(private http: HttpClient, private authService: AuthService, private router: Router, private projectService: ProjectService) {
     this.accessToken = authService.getAccessToken();
@@ -42,7 +44,7 @@ export class DashboardComponent implements OnInit {
       Authorization: `Bearer ${this.accessToken}`,
     });
 
-    return this.http.get<User[]>(`${this.usersEndpointBase}${selectedProject?.display}/users`, {headers});
+    return this.http.get<User[]>(`${this.usersEndpointBase}${selectedProject?.display}/users?max=999`, {headers});
   }
 
   logout() {
@@ -53,7 +55,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers().subscribe((response) => {
-      this.users = response;
+        this.users = response;
         console.log('Response: ', this.users);
       },
       (error) => {
@@ -83,7 +85,7 @@ export class DashboardComponent implements OnInit {
       const confirmation = window.confirm(`Are you sure you want to delete the user ${userToDelete.username}?`);
 
       if (confirmation) {
-        this.http.delete<void>(`${this.usersEndpointBase}${selectedProject?.display}/users/${userId}`, { headers })
+        this.http.delete<void>(`${this.usersEndpointBase}${selectedProject?.display}/users/${userId}`, {headers})
           .subscribe(
             () => {
               // Handle success, e.g., remove the user from the local array
@@ -97,4 +99,11 @@ export class DashboardComponent implements OnInit {
       }
     }
   }
+
+  shouldShowAddCountryLink(): boolean {
+    const selectedProject = this.projectService.getSelectedProject();
+    // Add any condition based on the selected project
+    return selectedProject?.display !== 'MobileApp';
+  }
+
 }

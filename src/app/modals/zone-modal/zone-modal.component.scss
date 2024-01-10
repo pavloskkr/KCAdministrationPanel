@@ -1,0 +1,135 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.modal-container {
+  background-color: #fff;
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  max-height: calc(80vh - 40px); /* Set a maximum height relative to the viewport height minus padding */
+  overflow-y: auto; /* Enable vertical scrolling only if needed */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+  max-height: 60vh; /* Set a maximum height relative to the viewport height for the form */
+  overflow-y: auto; /* Enable vertical scrolling only if needed */
+}
+
+input, select {
+  width: 100%;
+  max-width: calc(100% - 20px); /* Set a maximum width relative to the container width */
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0; /* Remove default margin */
+}
+
+/* Styling options within the dropdown */
+select option {
+  background-color: #fff;
+  color: #333;
+  font-size: large;
+}
+
+/* Hover effect on options */
+select option:hover {
+  background-color: #f4f4f4;
+}
+
+/* Active (selected) option styling */
+select option:checked {
+  background-color: #53eead; /* Selected option background color */
+  color: #fff; /* Selected option text color */
+}
+
+/* Focus state styles */
+select:focus {
+  box-shadow: 0 0 5px rgb(76, 220, 160); /* Blue shadow on focus */
+}
+
+/* Custom Checkbox Styling */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #4CAF50; /* Border color for unchecked state */
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+/* Checked state styles */
+input[type="checkbox"]:checked {
+  background-color: #4CAF50; /* Background color for checked state */
+  border: 2px solid #4CAF50; /* Border color for checked state */
+}
+
+/* Checkmark styling */
+input[type="checkbox"]:checked::before {
+  content: '\2713'; /* Unicode checkmark character */
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Focus state styles */
+input[type="checkbox"]:focus {
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Green shadow on focus */
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust this margin as needed */
+}
+
+.inline-label {
+  margin-right: 10px; /* Adjust this margin as needed */
+}
+
+button {
+  width: 100%;
+  max-width: calc(100% - 20px); /* Set a maximum width relative to the container width */
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="button"] {
+  background-color: #ccc;
+  margin-top: 10px;
+}
+
+

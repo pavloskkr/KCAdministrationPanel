@@ -1,0 +1,15 @@
+<div class="modal-background">
+  <div class="modal-container">
+    <h1>Add New Zones</h1>
+    <form (ngSubmit)="addZones()" #userForm="ngForm">
+      <label for="countryCode">Zone ID: *</label>
+      <input type="text" id="countryCode" name="countryCode" required>
+
+      <label for="countryName">Zone Name: *</label>
+      <input type="text" id="countryName" name="countryName" required>
+
+      <button style="background-color: limegreen" type="submit">Add Country</button>
+      <button type="button" (click)="closeModal.emit()">Close</button>
+    </form>
+  </div>
+</div>

@@ -4,13 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {HttpClientModule} from "@angular/common/http";
 import { FilterPipe } from './pipes/filter.pipe';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import { UserModalComponent } from './modals/user-modal/user-modal.component';
+import { CountryModalComponent } from './modals/country-modal/country-modal.component';
+import { ZoneModalComponent } from './modals/zone-modal/zone-modal.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { UserModalComponent } from './modals/user-modal/user-modal.component';
     LoginComponent,
     DashboardComponent,
     FilterPipe,
-    UserModalComponent
+    UserModalComponent,
+    CountryModalComponent,
+    ZoneModalComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +31,7 @@ import { UserModalComponent } from './modals/user-modal/user-modal.component';
     FormsModule,
     HttpClientModule,
     MatDialogModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

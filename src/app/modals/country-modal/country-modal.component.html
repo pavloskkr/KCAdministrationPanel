@@ -1,0 +1,46 @@
+<div class="modal-background">
+  <div class="modal-container">
+    <h1>Add New Country</h1>
+    <form (ngSubmit)="addCountry()" [formGroup]="newCountryForm">
+      <div class="form-group">
+        <label for="countryCode">
+          Country Code: *
+          <span class="info-icon" title="ISO2 abbreviation for countries">ℹ️</span>
+        </label>
+        <input
+          type="text"
+          id="countryCode"
+          name="countryCode"
+          formControlName="countryCode"
+          placeholder="e.g., IT"
+        >
+        <div *ngIf="newCountryForm.get('countryCode')?.hasError('required') && newCountryForm.get('countryCode')?.touched">
+          Country Code is required.
+        </div>
+        <div *ngIf="newCountryForm.get('countryCode')?.hasError('pattern') && newCountryForm.get('countryCode')?.touched">
+          Country Code must be 2 uppercase letters.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="countryName">Country Name: *</label>
+        <input
+          type="text"
+          id="countryName"
+          name="countryName"
+          formControlName="countryName"
+          placeholder="e.g., Italy"
+        >
+        <div *ngIf="newCountryForm.get('countryName')?.hasError('required') && newCountryForm.get('countryName')?.touched">
+          Country Name is required.
+        </div>
+        <div *ngIf="newCountryForm.get('countryName')?.hasError('pattern') && newCountryForm.get('countryName')?.touched">
+          Country Name must be a single word in camel case.
+        </div>
+      </div>
+
+      <button style="background-color: limegreen" type="submit" [disabled]="newCountryForm.invalid">Add Country</button>
+      <button type="button" (click)="closeModal.emit()">Close</button>
+    </form>
+  </div>
+</div>

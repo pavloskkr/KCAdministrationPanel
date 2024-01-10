@@ -12,7 +12,9 @@
   </div>
   <div class="service-name">User Registration Platform</div>
   <nav>
-    <a class="nav-item" (click)="openModal = true">Add User</a>
+    <a class="nav-item" (click)="openUserModal = true">Add User</a>
+    <a class="nav-item" *ngIf="shouldShowAddCountryLink()" (click)="openCountryModal = true">Add Country</a>
+    <a class="nav-item" *ngIf="shouldShowAddCountryLink()" (click)="openZonesModal = true">Add Zones</a>
     <a class="nav-item" (click)="logout()">Change Realm</a>
   </nav>
   <div class="search-container">
@@ -50,7 +52,17 @@
     </tr>
     </tbody>
   </table>
-  <app-user-modal *ngIf="openModal" (closeModal)="openModal = false"></app-user-modal>
+  <!-- Your existing code -->
+
+  <!-- Add User Modal -->
+  <app-user-modal *ngIf="openUserModal" (closeModal)="openUserModal = false"></app-user-modal>
+
+  <!-- Add Country Modal -->
+  <app-country-modal *ngIf="openCountryModal" (closeModal)="openCountryModal = false"></app-country-modal>
+
+  <!-- Add Zones Modal -->
+  <app-zone-modal *ngIf="openZonesModal" (closeModal)="openZonesModal = false"></app-zone-modal>
+
 </div>
 </body>
 </html>
