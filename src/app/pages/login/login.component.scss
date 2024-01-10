@@ -60,45 +60,36 @@
   margin-top: 20px;
 }
 
-/* Styling for the select dropdown */
-select {
+/* Styling for the input */
+input {
   background-color: #fff;
+  position: fixed;
   width: 350px;
   border: 1px solid #ccc;
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
-  cursor: pointer;
+  top: 52%;
+  right: 43%;
 }
 
-/* Styling for the select arrow */
-select::after {
-  content: '\25BC'; /* Unicode character for down arrow */
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: #333;
-}
-
-/* Hover and focus styles */
-select:hover, select:focus {
-  border-color: #666;
-}
-
+/* Styling for the check button */
 .check-button {
+  position: absolute;
   padding: 10px;
-  background-color: green;
+  background-color: #ffffff;
   color: white;
   border: none;
   cursor: pointer;
   margin-left: 20px;
   justify-content: center;
   transition: background-color 0.3s ease;
+  top: 51%;
+  left: 57%;
 }
 
 .check-button:hover {
-  background-color: darkgreen;
+  background-color: #c5c5c5;
 }
+
 
