@@ -1,14 +1,12 @@
 <div class="modal-background">
   <div class="modal-container">
     <h1>Add New Zones</h1>
-    <form (ngSubmit)="addZones()" #userForm="ngForm">
-      <label for="countryCode">Zone ID: *</label>
-      <input type="text" id="countryCode" name="countryCode" required>
-
-      <label for="countryName">Zone Name: *</label>
-      <input type="text" id="countryName" name="countryName" required>
-
-      <button style="background-color: limegreen" type="submit">Add Country</button>
+    <form>
+      <div class="file-drop" (drop)="onFileDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
+        <p>Drag & Drop Excel file here or click to upload</p>
+        <input type="file" (change)="onFileSelected($event)" />
+      </div>
+      <button style="background-color: limegreen" (click)="displayAlert()" [disabled]="isProcessing">Add Zones</button>
       <button type="button" (click)="closeModal.emit()">Close</button>
     </form>
   </div>

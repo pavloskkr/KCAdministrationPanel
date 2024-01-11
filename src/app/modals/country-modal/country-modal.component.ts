@@ -27,11 +27,14 @@ export class CountryModalComponent implements OnInit {
   addCountry() {
     const apiUrl = 'https://services.energylabs-ht.eu/imlDataCollector/services/tools/countries';
 
+    const countryCode = this.newCountryForm.get('countryCode')?.value || '';
+    const countryName = this.newCountryForm.get('countryName')?.value || '';
+
     // Make the POST request with { responseType: 'text' }
     this.http.post(apiUrl, {
-      key: this.newCountry.countryCode,
-      label: this.newCountry.countryName,
-      code: this.newCountry.countryCode
+      key: countryCode,
+      label: countryName,
+      code: countryCode
     }, {responseType: 'text'}).subscribe(
       (response) => {
         console.log('Country added successfully:', response);
@@ -39,9 +42,11 @@ export class CountryModalComponent implements OnInit {
         this.closeModal.emit();
       },
       (error) => {
+        window.alert(`Country, '${countryName}' with country code : ${countryCode} already exists!`);
         console.error('Failed to add country:', error);
         // Handle error
       }
     );
   }
+
 }
