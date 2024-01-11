@@ -30,7 +30,7 @@ export class UserModalComponent {
     temporary: false
   };
   currentStep = 1;
-  projectList: string[] = ['InternalUse', 'Sender', 'Drimpac', 'Parity', 'ECF4Clim', 'Chronicle', 'Accept'].sort();
+  projectList: string[] = ['InternalUse', 'Sender', 'Drimpac', 'Parity', 'ECF4Clim', 'Chronicle', 'Accept', 'DeRISK'].sort();
   countryList: { display: string; value: string }[] = [
     { display: 'Austria', value: 'AU' },
     { display: 'Denmark', value: 'DK' },
@@ -41,6 +41,7 @@ export class UserModalComponent {
     { display: 'Spain', value: 'ES' },
     { display: 'Romania', value: 'RO' },
     { display: 'Switzerland', value: 'CH' },
+    { display: 'Turkey', value: 'TR' },
   ].sort();
 
   nextStep() {
