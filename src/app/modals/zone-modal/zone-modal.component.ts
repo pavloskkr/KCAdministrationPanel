@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import * as XLSX from 'xlsx';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-zone-modal',
@@ -15,7 +15,8 @@ export class ZoneModalComponent implements OnInit {
   errorCount = 0;
   isProcessing = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit(): void {
   }
@@ -58,9 +59,9 @@ export class ZoneModalComponent implements OnInit {
     reader.onload = (e) => {
       const data = e.target?.result;
       if (data) {
-        const workbook: XLSX.WorkBook = XLSX.read(data, { type: 'binary' });
+        const workbook: XLSX.WorkBook = XLSX.read(data, {type: 'binary'});
         const sheetName = workbook.SheetNames[0]; // Assuming the data is in the first sheet
-        const excelData: any[] = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1 });
+        const excelData: any[] = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {header: 1});
 
         // Assuming the first row contains headings
         this.headings = excelData[0];
@@ -110,13 +111,24 @@ export class ZoneModalComponent implements OnInit {
     const apiUrl = 'https://services.energylabs-ht.eu/imlDataCollector/services/tools/spaces';
 
     this.http.post(apiUrl, payload).subscribe(
-      (response) => {
-        console.log('Zone added successfully:', response);
-        this.successCount++;
+      (response: any) => {
+        if (response && (response.status === 200 || response.status === 201)) {
+          console.log('Zone added successfully:', response);
+          this.successCount++;
+        } else {
+          console.error('Failed to add zone. Unexpected response:', response);
+          this.errorCount++;
+        }
       },
       (error) => {
-        console.error('Failed to add zone:', error);
-        this.errorCount++;
+        if (error && (error.status === 200 || error.status === 201)) {
+          // Check for 200 or 201 status within the error callback
+          console.log('Zone added successfully:', error);
+          this.successCount++;
+        } else {
+          console.error('Failed to add zone:', error);
+          this.errorCount++;
+        }
       },
       () => {
         // Display alert after each request is processed

@@ -1,8 +1,9 @@
+// login.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
-import {ProjectService} from "../../services/project.service";
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-login',
@@ -49,7 +50,6 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         const accessToken = response.access_token;
 
-        console.log("THIS IS IT: ", accessToken)
         this.authService.setAccessToken(accessToken);
         // Successful response, navigate to the dashboard
         this.router.navigate(['/dashboard']);

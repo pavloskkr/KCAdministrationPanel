@@ -56,7 +56,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers().subscribe((response) => {
         this.users = response;
-        console.log('Response: ', this.users);
       },
       (error) => {
         console.error('Error:', error);
