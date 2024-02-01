@@ -61,9 +61,11 @@ export class ProsumerToProjectComponent implements OnInit {
           (response: HttpResponse<any>) => {
             if (response && (response.status === 200 || response.status === 201)) {
               console.log('Request successful:', response);
+              this.navigateToProsumerHasProject();
               // Handle success here
             } else {
               console.error('Unexpected response:', response);
+              this.navigateToProsumerHasProject();
               // Handle unexpected response here
             }
           },

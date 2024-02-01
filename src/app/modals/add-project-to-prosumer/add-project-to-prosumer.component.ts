@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpClient, HttpParams, HttpResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-project-to-prosumer',
@@ -14,7 +15,7 @@ export class AddProjectToProsumerComponent implements OnInit {
   selectedProsumer: number | null = null;
   selectedProject: number | null = null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -46,6 +47,12 @@ export class AddProjectToProsumerComponent implements OnInit {
       );
   }
 
+  navigateToProsumerHasProject() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/project_to_prosumer']);
+  }
+
   matchPtoP() {
     // Check if both a prosumer and project are selected
     if (this.selectedProsumer && this.selectedProject) {
@@ -63,9 +70,13 @@ export class AddProjectToProsumerComponent implements OnInit {
           (response: any) => {
             if (response && (response.status === 200 || response.status === 201)) {
               console.log('Request successful:', response);
+              this.closeModal.emit();
+              this.navigateToProsumerHasProject();
               // Handle success here
             } else {
               console.error('Unexpected response:', response);
+              this.closeModal.emit();
+              this.navigateToProsumerHasProject();
               // Handle unexpected response here
             }
           },
