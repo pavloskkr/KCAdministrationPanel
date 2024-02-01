@@ -69,6 +69,12 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
+  navigateToProsumerHasProject() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/project_to_prosumer']);
+  }
+
   deleteUser(userId: string) {
     const selectedProject = this.projectService.getSelectedProject();
     const headers = new HttpHeaders({

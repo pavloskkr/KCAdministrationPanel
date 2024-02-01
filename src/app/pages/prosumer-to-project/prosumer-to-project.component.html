@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Dashboard</title>
+  <title>Prosumer has project</title>
 </head>
 <body>
 <header>
@@ -10,7 +10,7 @@
     <!-- Your logo image goes here -->
     <img src="/assets/img/WhiteLogo.png" alt="Your Logo">
   </div>
-  <div class="service-name">User Registration Platform</div>
+  <div class="service-name">Add Project to Prosumer</div>
   <nav>
     <a class="nav-item" (click)="openUserModal = true">Add User</a>
     <a class="nav-item" *ngIf="shouldShowAddCountryLink()" (click)="openCountryModal = true">Add Country</a>
@@ -23,30 +23,28 @@
   </div>
 </header>
 <div class="dashboard-container">
-  <h1>Registered Users</h1>
-  <p>Total Users: {{ users.length }}</p>
-
+  <br *ngIf="shouldShowAddCountryLink()">
+  <br *ngIf="shouldShowAddCountryLink()">
+  <br *ngIf="shouldShowAddCountryLink()">
+  <button *ngIf="shouldShowAddCountryLink()" (click)="openPtoPModal = true" class="greenish-button">Add Project to Prosumer</button>
+  <br *ngIf="shouldShowAddCountryLink()">
+  <br *ngIf="shouldShowAddCountryLink()">
   <table>
     <thead>
     <tr>
-      <th>Username</th>
-      <th>Prosumer UUID</th>
+      <th>Prosumer</th>
       <th>Project Name</th>
-      <th>Country Code</th>
-      <th style="color: #ff6363; text-align: center;">Delete User</th>
-      <!-- Add more columns as needed -->
+      <th style="color: #ff6363; text-align: center;">Delete Association</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of users | filter: searchTerm">
-      <td>{{ user.username }}</td>
-      <td>{{ user.attributes?.prosumerUUID }}</td>
-      <td>{{ user.attributes?.projectName }}</td>
-      <td>{{ user.attributes?.countryCode }}</td>
+    <tr *ngFor="let prosumer_has_project of prosumers_has_projects |  multiSort:['[2]', '[3]', '[0]']  | search: searchTerm">
+      <td>{{ prosumer_has_project[0] }}</td>
+      <td>{{ prosumer_has_project[3] }}</td>
       <td>
         <!-- Add a delete button for each user -->
         <div class="delete-icon" style="display: flex; justify-content: center; align-items: center;">
-          <img (click)="deleteUser(user.id)" alt="trashcan" [src]="'/assets/img/trashcan.svg'" style="width: 25px; height: 25px; cursor: pointer;">
+          <img (click)="deleteAssociation(prosumer_has_project[1],prosumer_has_project[2])" alt="trashcan" [src]="'/assets/img/trashcan.svg'" style="width: 25px; height: 25px; cursor: pointer;">
         </div>
       </td>
       <!-- Add more columns as needed -->
@@ -63,6 +61,9 @@
 
   <!-- Add Zones Modal -->
   <app-zone-modal *ngIf="openZonesModal" (closeModal)="openZonesModal = false"></app-zone-modal>
+
+  <!-- Add PtoP Modal -->
+  <app-add-project-to-prosumer *ngIf="openPtoPModal" (closeModal)="openPtoPModal = false"></app-add-project-to-prosumer>
 
 </div>
 </body>

@@ -1,0 +1,80 @@
+.ptp-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ptp-modal-container {
+  background-color: #fff;
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  max-height: calc(80vh - 40px); /* Set a maximum height relative to the viewport height minus padding */
+  overflow-y: auto; /* Enable vertical scrolling only if needed */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+h1 {
+  font-weight: bold;
+  font-size: math;
+  text-align: center;
+}
+
+.dropdown-container {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+#assign-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#assign-button:hover {
+  background-color: #45a049; /* Darker Green */
+}
+
+
+button {
+  width: 100%;
+  max-width: calc(100% - 20px); /* Set a maximum width relative to the container width */
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="button"] {
+  background-color: #ccc;
+  margin-top: 10px;
+}
+
+
+

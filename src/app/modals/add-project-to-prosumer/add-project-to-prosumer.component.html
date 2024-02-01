@@ -1,0 +1,21 @@
+<div class="ptp-modal-background">
+  <div class="ptp-modal-container">
+    <h1>Match the prosumer to the project</h1>
+    <div class="dropdown-container">
+      <select id="prosumers-dropdown" class="dropdown" [(ngModel)]="selectedProsumer">
+        <option disabled selected value="">Select Prosumer</option>
+        <option *ngFor="let prosumer of prosumers | dropdownFilter: prosumerSearchText" [value]="prosumer.id">
+          {{ prosumer.name }}
+        </option>
+      </select>
+      <select id="projects-dropdown" class="dropdown" [(ngModel)]="selectedProject">
+        <option disabled selected value="">Select Project</option>
+        <option *ngFor="let project of projects" [value]="project.id">
+          {{ project.name }}
+        </option>
+      </select>
+      <button id="assign-button" class="greenish-button" (click)="matchPtoP()">Assign</button>
+    </div>
+    <button type="button" (click)="closeModal.emit()">Close</button>
+  </div>
+</div>

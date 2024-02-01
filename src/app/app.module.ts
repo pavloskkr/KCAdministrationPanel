@@ -13,6 +13,11 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import { UserModalComponent } from './modals/user-modal/user-modal.component';
 import { CountryModalComponent } from './modals/country-modal/country-modal.component';
 import { ZoneModalComponent } from './modals/zone-modal/zone-modal.component';
+import { ProsumerToProjectComponent } from './pages/prosumer-to-project/prosumer-to-project.component';
+import {MultiSortPipe} from "./pipes/multiSort.pipe";
+import {SearchPipe} from "./pipes/search.pipe";
+import { AddProjectToProsumerComponent } from './modals/add-project-to-prosumer/add-project-to-prosumer.component';
+import { DropdownFilterPipe } from './pipes/dropdown-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -20,9 +25,14 @@ import { ZoneModalComponent } from './modals/zone-modal/zone-modal.component';
     LoginComponent,
     DashboardComponent,
     FilterPipe,
+    SearchPipe,
+    MultiSortPipe,
     UserModalComponent,
     CountryModalComponent,
-    ZoneModalComponent
+    ZoneModalComponent,
+    ProsumerToProjectComponent,
+    AddProjectToProsumerComponent,
+    DropdownFilterPipe
   ],
   imports: [
     BrowserModule,
