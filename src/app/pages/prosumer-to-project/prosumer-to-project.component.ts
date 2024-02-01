@@ -13,7 +13,7 @@ export class ProsumerToProjectComponent implements OnInit {
   accessToken: string | null;
   prosumers_has_projects: Object[] = [];
   searchTerm: string = '';
-  private readonly baseUrl = 'http://localhost:8080/imlCloudAPI/services/tools/';
+  private readonly baseUrl = 'https://services.energylabs-ht.eu/imlDataCollector/services/tools/';
   openPtoPModal = false;
   openUserModal = false;
   openCountryModal = false;
@@ -56,11 +56,9 @@ export class ProsumerToProjectComponent implements OnInit {
         .set('prosumerId', prosumerId.toString())
         .set('projectId', projectId.toString());
 
-      this.http.post<any>('http://localhost:8080/imlCloudAPI/services/tools/deleteprojecttoprosumerassociation', {}, { params })
+      this.http.post<any>('https://services.energylabs-ht.eu/imlDataCollector/services/tools/deleteprojecttoprosumerassociation', {}, { params })
         .subscribe(
           (response: HttpResponse<any>) => {
-            console.log('aaaaaaaa  ',response);
-            console.log('aqwewqeqweqwaaaaa  ');
             if (response && (response.status === 200 || response.status === 201)) {
               console.log('Request successful:', response);
               // Handle success here

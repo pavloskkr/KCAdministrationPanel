@@ -23,7 +23,7 @@ export class AddProjectToProsumerComponent implements OnInit {
   }
 
   fetchProsumers() {
-    this.http.get<any[]>('http://localhost:8080/imlCloudAPI/services/tools/prosumers')
+    this.http.get<any[]>('https://services.energylabs-ht.eu/imlDataCollector/services/tools/prosumers')
       .subscribe(
         (data: any[]) => {
           this.prosumers = data.map(item => ({id: item[0], name: item[1]}));
@@ -35,7 +35,7 @@ export class AddProjectToProsumerComponent implements OnInit {
   }
 
   fetchProjects() {
-    this.http.get<any[]>('http://localhost:8080/imlCloudAPI/services/tools/availableprojects')
+    this.http.get<any[]>('https://services.energylabs-ht.eu/imlDataCollector/services/tools/availableprojects')
       .subscribe(
         (data: any[]) => {
           this.projects = data.map(item => ({id: item[0], name: item[1]}));
@@ -55,7 +55,7 @@ export class AddProjectToProsumerComponent implements OnInit {
         .set('projectId', this.selectedProject);
 
       // Send the HTTP request with the query parameters
-      this.http.post('http://localhost:8080/imlCloudAPI/services/tools/updateprojecttoprosumer', {}, {
+      this.http.post('https://services.energylabs-ht.eu/imlDataCollector/services/tools/updateprojecttoprosumer', {}, {
         params,
         responseType: 'text' // Set the response type to prevent JSON parsing
       })
