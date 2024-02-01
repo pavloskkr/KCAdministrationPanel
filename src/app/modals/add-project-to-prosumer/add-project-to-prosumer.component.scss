@@ -19,27 +19,28 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 90%;
   max-width: 400px;
-  max-height: calc(80vh - 40px); /* Set a maximum height relative to the viewport height minus padding */
   overflow-y: auto; /* Enable vertical scrolling only if needed */
   overflow-x: hidden; /* Hide horizontal scrollbar */
+  max-height: calc(100vh - 40px); /* Set a maximum height relative to the viewport height minus padding */
 }
 
 h1 {
   font-weight: bold;
-  font-size: math;
+  font-size: 20px; /* Adjust as needed */
   text-align: center;
+  margin-bottom: 20px; /* Add margin for spacing */
 }
 
 .dropdown-container {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Align items vertically */
 }
 
 .dropdown {
   padding: 8px;
   font-size: 16px;
   border-radius: 4px;
-  margin-right: 10px;
+  margin-bottom: 10px; /* Add margin for spacing */
 }
 
 #assign-button {
@@ -53,12 +54,12 @@ h1 {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-bottom: 10px; /* Add margin for spacing */
 }
 
 #assign-button:hover {
   background-color: #45a049; /* Darker Green */
 }
-
 
 button {
   width: 100%;

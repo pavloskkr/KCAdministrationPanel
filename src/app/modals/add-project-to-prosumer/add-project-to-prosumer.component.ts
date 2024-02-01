@@ -28,6 +28,17 @@ export class AddProjectToProsumerComponent implements OnInit {
       .subscribe(
         (data: any[]) => {
           this.prosumers = data.map(item => ({id: item[0], name: item[1]}));
+
+          this.prosumers.sort((a, b) => {
+            // Convert names to lowercase for case-insensitive sorting
+            const nameA = a.name.toLowerCase();
+            const nameB = b.name.toLowerCase();
+
+            // Compare the names
+            if (nameA < nameB) return -1;
+            if (nameA > nameB) return 1;
+            return 0; // Names are equal
+          });
         },
         (error) => {
           console.error('Error fetching prosumers:', error);
@@ -39,13 +50,27 @@ export class AddProjectToProsumerComponent implements OnInit {
     this.http.get<any[]>('https://services.energylabs-ht.eu/imlDataCollector/services/tools/availableprojects')
       .subscribe(
         (data: any[]) => {
-          this.projects = data.map(item => ({id: item[0], name: item[1]}));
+          // Map the data to objects with id and name properties
+          this.projects = data.map(item => ({ id: item[0], name: item[1] }));
+
+          // Sort the projects array by name
+          this.projects.sort((a, b) => {
+            // Convert names to lowercase for case-insensitive sorting
+            const nameA = a.name.toLowerCase();
+            const nameB = b.name.toLowerCase();
+
+            // Compare the names
+            if (nameA < nameB) return -1;
+            if (nameA > nameB) return 1;
+            return 0; // Names are equal
+          });
         },
         (error) => {
           console.error('Error fetching projects:', error);
         }
       );
   }
+
 
   navigateToProsumerHasProject() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;

@@ -71,6 +71,7 @@ export class ProsumerToProjectComponent implements OnInit {
           },
           error => {
             console.error('Request failed:', error);
+            this.navigateToProsumerHasProject();
             // Handle error here
           }
         );
