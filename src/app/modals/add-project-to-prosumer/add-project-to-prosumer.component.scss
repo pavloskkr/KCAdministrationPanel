@@ -17,10 +17,9 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 90%;
-  max-width: 400px;
-  overflow-y: auto; /* Enable vertical scrolling only if needed */
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+  width: 95%; /* Increase the width to make the container wider */
+  max-width: 600px; /* Set a maximum width for the container */
+  overflow: visible;
   max-height: calc(100vh - 40px); /* Set a maximum height relative to the viewport height minus padding */
 }
 
@@ -34,6 +33,21 @@ h1 {
 .dropdown-container {
   display: flex;
   flex-direction: column; /* Align items vertically */
+  overflow: visible; /* Allow overflow outside the container */
+  position: relative; /* Ensure relative positioning for absolute positioning of dropdown list */
+}
+
+.dropdown-container .ng-dropdown-panel {
+  position: absolute; /* Position the dropdown list absolutely */
+  z-index: 1000; /* Ensure dropdown list is above other elements */
+  background-color: white; /* Set background color for dropdown list */
+  border: 1px solid #ccc; /* Add border for dropdown list */
+  border-radius: 4px; /* Add border radius for dropdown list */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+  max-height: 200px; /* Set maximum height for dropdown list */
+  width: 100%; /* Set width to match parent container */
+  top: calc(100% + 10px); /* Position dropdown list below select element */
+  left: 0; /* Align dropdown list with left edge of select element */
 }
 
 .dropdown {
@@ -76,6 +90,3 @@ button[type="button"] {
   background-color: #ccc;
   margin-top: 10px;
 }
-
-
-

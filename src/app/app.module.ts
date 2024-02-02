@@ -18,6 +18,7 @@ import {MultiSortPipe} from "./pipes/multiSort.pipe";
 import {SearchPipe} from "./pipes/search.pipe";
 import { AddProjectToProsumerComponent } from './modals/add-project-to-prosumer/add-project-to-prosumer.component';
 import { DropdownFilterPipe } from './pipes/dropdown-filter.pipe';
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DropdownFilterPipe } from './pipes/dropdown-filter.pipe';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    NgSelectModule,
     HttpClientModule,
     MatDialogModule,
     ReactiveFormsModule,
